@@ -1,4 +1,4 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'mongoid_extended'
 
+require 'mongoid_extended'
 require 'minitest/autorun'
