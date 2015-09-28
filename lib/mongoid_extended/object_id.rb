@@ -4,7 +4,7 @@ module MongoidExtended
   module ObjectId
     class << self
       def configured
-        BSON::ObjectId.send(:prepend, HashRepresentation)
+        ::BSON::ObjectId.send(:prepend, HashRepresentation)
       end
     end
 
