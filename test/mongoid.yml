@@ -1,13 +1,3 @@
-development:
-  sessions:
-    default:
-      database: mongoid_extended_development
-      hosts:
-        - localhost:27017
-      options:
-  options:
-    raise_not_found_error: false
-    use_utc: true
 test:
   sessions:
     default:
