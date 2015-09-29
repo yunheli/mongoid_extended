@@ -1,11 +1,9 @@
+# encoding: utf-8
+
 require 'test_helper'
 
 class MongoidExtendedTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::MongoidExtended::VERSION
-  end
-
-  def test_it_does_something_useful
-    assert false
+    assert_equal '0.1.0', ::MongoidExtended::VERSION
   end
 end
