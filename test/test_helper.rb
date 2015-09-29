@@ -10,5 +10,6 @@ class TestMongoidExtended
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :name, type: String, default: 'test'
+  field :test_at_1, type: Time
+  field :test_at_2, type: DateTime
 end

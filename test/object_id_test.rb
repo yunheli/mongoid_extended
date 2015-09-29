@@ -5,7 +5,7 @@ require 'test_helper'
 class ObjectIdTest < Minitest::Test
   def setup
     MongoidExtended.configure :ObjectId
-    @test_object = TestMongoidExtended.create
+    @test_object = TestMongoidExtended.create!
   end
 
   def teardown
