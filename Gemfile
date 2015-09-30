@@ -7,6 +7,3 @@ end
 
 # Specify your gem's dependencies in mongoid_extended.gemspec
 gemspec
-
-gem 'mongoid', '~> 4.0'
-gem 'active_model_serializers', '~> 0.9'

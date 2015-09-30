@@ -6,6 +6,12 @@ module MongoidExtended
       def configured
         ::Time.send(:extend, TimeDemongoize)
         ::DateTime.send(:extend, DateTimeDemongoize)
+
+        @configured = true
+      end
+
+      def configured?
+        !!@configured
       end
     end
 

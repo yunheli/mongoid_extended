@@ -14,7 +14,8 @@ module MongoidExtended
     def configure *module_names
       module_names.each do |module_name|
         if const_defined?(module_name)
-          Object.const_get("MongoidExtended::#{module_name}").send(:configured)
+          klass = Object.const_get("MongoidExtended::#{module_name}")
+          klass.configured unless klass.configured?
         else
           raise NameError, "uninitialized constant `#{module_name}` in MongoidExtended"
         end
