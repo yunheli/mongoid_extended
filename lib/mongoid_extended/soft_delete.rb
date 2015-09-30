@@ -20,16 +20,16 @@ module MongoidExtended
           define_method :destroy do
             run_callbacks(:destroy) do
               if persisted?
-                self.set(deleted_at: Time.now.utc)
-                self.set(updated_at: Time.now.utc)
+                set(deleted_at: Time.now.utc)
+                set(updated_at: Time.now.utc)
               end
               @destroyed = true
             end
             freeze
           end
 
-          define_method "deleted?".to_sym do
-            !self.deleted_at.blank?
+          define_method :deleted? do
+            !deleted_at.blank?
           end
         end
 

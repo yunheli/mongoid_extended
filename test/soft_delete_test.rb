@@ -23,6 +23,8 @@ class SoftDeleteTest < Minitest::Test
   def test_object_sofe_deleted_is_frozen
     @test_object.destroy
 
-    assert_raises RuntimeError { @test_object.touch }
+    assert_raises RuntimeError do
+      @test_object.touch
+    end
   end
 end
