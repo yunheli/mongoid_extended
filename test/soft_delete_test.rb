@@ -6,7 +6,6 @@ class SoftDeleteTest < Minitest::Test
   def setup
     MongoidExtended.configure :SoftDelete
     TestMongoidExtended.send(:include, MongoidExtended::SoftDelete)
-
     @test_object = TestMongoidExtended.create!
   end
 
@@ -28,5 +27,20 @@ class SoftDeleteTest < Minitest::Test
     end
   end
 
-  # etc.
+  def test_class_has_a_deleted_at_index
+    index = TestMongoidExtended.index_specifications.first
+
+    assert_equal index.key, { deleted_at: -1 }
+    assert_equal index.options, { background: true }
+  end
+
+  def test_class_has_a_undeleted_scope
+    assert_equal TestMongoidExtended.count, 1
+
+    @test_object.destroy
+
+    assert_equal TestMongoidExtended.count, 1
+    assert_equal TestMongoidExtended.undeleted.count, 0
+  end
+
 end
