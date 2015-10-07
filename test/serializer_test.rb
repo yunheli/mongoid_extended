@@ -3,14 +3,10 @@
 require 'test_helper'
 require 'active_model_serializers'
 
-class SerializerTest < Minitest::Test
+class SerializerTest < MongoidExtendedTest
   def setup
     MongoidExtended.configure :Serializer, :ObjectId
     @test_object = TestMongoidExtended.create!
-  end
-
-  def teardown
-    @test_object.delete
   end
 
   # class TestMongoidExtendedSerializer < ::ActiveModel::Serializer

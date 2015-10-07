@@ -2,14 +2,10 @@
 
 require 'test_helper'
 
-class ObjectIdTest < Minitest::Test
+class ObjectIdTest < MongoidExtendedTest
   def setup
     MongoidExtended.configure :ObjectId
     @test_object = TestMongoidExtended.create!
-  end
-
-  def teardown
-    @test_object.delete
   end
 
   def test_object_id_is_as_hash_representation

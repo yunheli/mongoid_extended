@@ -2,14 +2,10 @@
 
 require 'test_helper'
 
-class EpochTimeTest < Minitest::Test
+class EpochTimeTest < MongoidExtendedTest
   def setup
     MongoidExtended.configure :EpochTime
     @test_object = TestMongoidExtended.create!
-  end
-
-  def teardown
-    @test_object.delete
   end
 
   def test_the_object_default_time_field_as_json_is_a_integer

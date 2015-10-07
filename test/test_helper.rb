@@ -12,3 +12,9 @@ class TestMongoidExtended
   field :test_at_1, type: Time
   field :test_at_2, type: DateTime
 end
+
+class MongoidExtendedTest < Minitest::Test
+  def teardown
+    TestMongoidExtended.delete_all
+  end
+end
