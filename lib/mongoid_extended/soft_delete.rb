@@ -36,7 +36,7 @@ module MongoidExtended
             run_callbacks(:destroy) do
               if persisted?
                 set(deleted_at: Time.now.utc)
-                set(updated_at: Time.now.utc)
+                set(updated_at: Time.now.utc) if respond_to?(:updated_at)
               end
               @destroyed = true
             end
