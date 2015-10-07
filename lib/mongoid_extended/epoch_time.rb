@@ -4,6 +4,10 @@ module MongoidExtended
   module EpochTime
     class << self
       def configured
+        unless ::Time.respond_to?(:demongoize) && ::DateTime.respond_to?(:demongoize)
+          raise MongoidExtended::GemsLoadError.new(:mongoid)
+        end
+
         ::Time.send(:extend, TimeDemongoize)
         ::DateTime.send(:extend, DateTimeDemongoize)
 

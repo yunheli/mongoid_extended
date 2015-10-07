@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require 'mongoid' unless Object.const_defined?('Mongoid')
+require 'mongoid' unless ::Object.const_defined?('Mongoid')
 
 require_relative './concern' unless defined?(ActiveSupport::Concern)
 require_relative './mongoid_extended/epoch_time'
@@ -9,6 +9,12 @@ require_relative './mongoid_extended/serializer'
 require_relative './mongoid_extended/soft_delete'
 
 module MongoidExtended
+  class GemsLoadError < StandardError #:nodoc:
+    def initialize(gem_name)
+      super("`#{gem_name}` gem must be required first")
+    end
+  end
+
   class << self
     # configure method is used for select extend modules
     # @example Use soft delete module and object id module
@@ -16,7 +22,7 @@ module MongoidExtended
     def configure *module_names
       module_names.each do |module_name|
         if const_defined?(module_name)
-          klass = Object.const_get("MongoidExtended::#{module_name}")
+          klass = ::Object.const_get("MongoidExtended::#{module_name}")
           klass.configured unless klass.configured?
         else
           raise NameError, "uninitialized constant `#{module_name}` in MongoidExtended"

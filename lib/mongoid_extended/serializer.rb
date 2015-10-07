@@ -4,6 +4,10 @@ module MongoidExtended
   module Serializer
     class << self
       def configured
+        unless ::Object.const_defined?('ActiveModel::SerializerSupport')
+          raise MongoidExtended::GemsLoadError.new(:active_model_serializers)
+        end
+
         ::Mongoid::Document.send(:include, ActiveModel::SerializerSupport)
         ::Mongoid::Criteria.delegate(:active_model_serializer, to: :to_a)
 
