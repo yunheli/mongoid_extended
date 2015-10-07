@@ -4,8 +4,14 @@ module MongoidExtended
   module EpochTime
     class << self
       def configured
-        ::Mongoid::Extensions::Time::ClassMethods.send(:prepend, TimeDemongoize)
-        ::Mongoid::Extensions::DateTime::ClassMethods.send(:prepend, DateTimeDemongoize)
+        ::Time.send(:extend, TimeDemongoize)
+        ::DateTime.send(:extend, DateTimeDemongoize)
+
+        @configured = true
+      end
+
+      def configured?
+        !!@configured
       end
     end
 

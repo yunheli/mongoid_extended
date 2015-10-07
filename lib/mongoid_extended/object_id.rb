@@ -5,6 +5,12 @@ module MongoidExtended
     class << self
       def configured
         ::BSON::ObjectId.send(:prepend, HashRepresentation)
+
+        @configured = true
+      end
+
+      def configured?
+        !!@configured
       end
     end
 

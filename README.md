@@ -1,8 +1,6 @@
 # MongoidExtended
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mongoid_extended`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Mongoid extended, Support EpochTime, ObjectId, Serializer, SoftDelete
 
 ## Installation
 
@@ -22,17 +20,69 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### EpochTime
 
-## Development
+```ruby
+MongoidExtended.configure :EpochTime
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+class User
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+  field :locked_at, type: DateTime, default: -> { Time.now.utc }
+end
+
+user = User.create
+#<User _id: 5614eb9b908c4f0828000007, created_at: 2015-10-07 09:53:31 UTC, updated_at: 2015-10-07 09:53:31 UTC, locked_at: 2015-10-07 09:53:31 UTC>
+
+user.created_at # => 1444211611
+user.updated_at # => 1444211611
+user.locked_at  # => 1444211611
+```
+
+### ObjectId
+
+```ruby
+MongoidExtended.configure :ObjectId
+
+User.create.to_json
+
+{
+  "_id": "5614eb9b908c4f0828000007"
+}
+```
+
+### Serializer
+
+```ruby
+# add active_model_serializers support for mongoid
+MongoidExtended.configure :Serializer
+```
+
+### SoftDelete
+
+```ruby
+MongoidExtended.configure :SoftDelete
+
+class User
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  include MongoidExtended::SoftDelete
+end
+
+@user = User.create
+@user.destroy
+@user.deleted? # => true
+@user.deleted_at # => 2015-10-07 18:09:19 +0800
+@user.touch  # => RuntimeError, can't modify frozen Hash
+
+User.count # => 1
+User.undeleted.count # => 0
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mongoid_extended. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/NaixSpirit/mongoid_extended. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
