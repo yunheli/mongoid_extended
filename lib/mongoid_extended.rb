@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require 'mongoid' unless ::Object.const_defined?('Mongoid')
+require 'mongoid' unless defined?(Mongoid)
 
 require_relative './concern' unless defined?(ActiveSupport::Concern)
 require_relative './mongoid_extended/epoch_time'
