@@ -9,9 +9,9 @@ class SerializerTest < MongoidExtendedTest
     @test_object = TestMongoidExtended.create!
   end
 
-  # class TestMongoidExtendedSerializer < ::ActiveModel::Serializer
-  #   attributes :id, :test_at_1, :created_at
-  # end
+  class TestMongoidExtendedSerializer < ::ActiveModel::Serializer
+    attributes :id, :test_at_1, :created_at
+  end
 
   def test_mongoid_serializer_works
   end
