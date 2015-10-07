@@ -2,7 +2,6 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'mongoid_extended'
 require 'minitest/autorun'
-require 'mongoid'
 require 'active_model_serializers'
 
 Mongoid.load!(File.expand_path('../mongoid.yml', __FILE__), :test)

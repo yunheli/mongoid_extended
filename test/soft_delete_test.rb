@@ -27,4 +27,6 @@ class SoftDeleteTest < Minitest::Test
       @test_object.touch
     end
   end
+
+  # etc.
 end
