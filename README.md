@@ -20,6 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
+```ruby
+require 'mongoid_extended'
+
+MongoidExtended.configure :EpochTime, :ObjectId, :Serializer, :SoftDelete
+```
+
 ### EpochTime
 
 ```ruby
