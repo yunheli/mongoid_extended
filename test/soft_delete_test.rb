@@ -17,8 +17,8 @@ class SoftDeleteTest < MongoidExtendedTest
 
   def test_object_deleted_at
     @test_object.destroy
-    time = @test_object.updated_at.to_i
 
+    time = @test_object.updated_at.to_i
     assert_equal @test_object.deleted_at.to_i, time
   end
 
