@@ -15,6 +15,12 @@ class SoftDeleteTest < MongoidExtendedTest
     assert_equal @test_object.deleted?, true
   end
 
+  def test_object_soft_delete_use_destroy!
+    @test_object.destroy!
+
+    assert_equal @test_object.deleted?, true
+  end
+
   def test_object_deleted_at
     @test_object.destroy
 
