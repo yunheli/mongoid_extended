@@ -2,6 +2,7 @@
 ---
 
 [![Build Status](https://travis-ci.org/NaixSpirit/mongoid_extended.svg?branch=develop)](https://travis-ci.org/NaixSpirit/mongoid_extended)
+[![Gem Version](https://badge.fury.io/rb/mongoid_extended.svg)](https://badge.fury.io/rb/mongoid_extended)
 
 Mongoid extended, Support EpochTime, ObjectId, Serializer, SoftDelete
 
