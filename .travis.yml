@@ -6,7 +6,10 @@ rvm:
   - 2.1
   - 2.2
 env:
-  - USE_OFFICIAL_GEM_SOURCE=true CODECLIMATE_REPO_TOKEN=b96c02b3cf400e79edcd08eaaefe6bfe82dc2fdf77c7dc09b1ce3d6a1040e124
+  - USE_OFFICIAL_GEM_SOURCE=true
+addons:
+  code_climate:
+    repo_token: b96c02b3cf400e79edcd08eaaefe6bfe82dc2fdf77c7dc09b1ce3d6a1040e124
 before_install: gem install bundler -v 1.10.5
 notifications:
   recipients:
