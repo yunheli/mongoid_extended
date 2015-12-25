@@ -24,11 +24,11 @@ module MongoidExtended
     #
     # @since 2.0.0
     module HashRepresentation
-      def to_json
+      def to_json(*args)
         to_s
       end
 
-      def as_json
+      def as_json(*args)
         to_s
       end
     end
